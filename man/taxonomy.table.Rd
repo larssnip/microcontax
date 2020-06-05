@@ -28,11 +28,10 @@ taxonomy.table[1:10,]
 genusLookup(taxonomy.table$Genus[1:10],level="Family")
 
 }
-\author{
-Hilde Vinje, Kristian Hovde Liland, Lars Snipen.
-}
 \seealso{
 \code{\link{genusLookup}}, \code{\link[microcontax.data]{contax.full}},
 \code{\link{contax.trim}}, \code{\link{getDomain}}.
 }
-
+\author{
+Hilde Vinje, Kristian Hovde Liland, Lars Snipen.
+}

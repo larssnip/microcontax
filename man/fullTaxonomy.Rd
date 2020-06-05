@@ -30,10 +30,9 @@ fullTaxonomy(genera)
 
 
 }
-\author{
-Lars Snipen.
-}
 \seealso{
 \code{\link{taxonomy.table}}, \code{\link{genusLookup}}.
 }
-
+\author{
+Lars Snipen.
+}

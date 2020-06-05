@@ -11,12 +11,12 @@ data(contax.trim)
 The trimmed version of the ConTax data set.
 }
 \details{
-\code{contax.trim} is a \code{\link[microseq]{Fasta}} object containing 38 781 full-length 16S rRNA 
+\code{contax.trim} is a \code{data.frame} object containing 38 781 full-length 16S rRNA 
 sequences. It is the trimmed version of the full data set (see below). Large taxa (many sequences) have
-been trimmed as described in Vinje et al (2016) to obtain a data set with a more even representation of
+been trimmed as described in Vinje et al. (2016) to obtain a data set with a more even representation of
 the prokaryotic taxonomy.
 
-The \code{contax.full} is the full consensus taxonomy data set as described in Vinje et al (2016). The data
+The \code{contax.full} is the full consensus taxonomy data set as described in Vinje et al. (2016). The data
 set is too large for CRAN and thus available as a separate package \code{microcontax.data}. See example
 below for how to obtain \code{contax.full}.
 
@@ -57,10 +57,9 @@ data("contax.full", package="microcontax.data")
 }
 
 }
-\author{
-Hilde Vinje, Kristian Hovde Liland, Lars Snipen.
-}
 \seealso{
 \code{\link{medoids}}, \code{\link{getDomain}}, \code{\link[microcontax.data]{contax.full}}.
 }
-
+\author{
+Hilde Vinje, Kristian Hovde Liland, Lars Snipen.
+}

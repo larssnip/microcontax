@@ -13,10 +13,10 @@
 #' getTag(header)
 #' getTaxonomy(header)
 #' 
-#' @param header A vector of texts, typically the \code{Header} from a \code{\link[microseq]{Fasta}} object,
+#' @param header A vector of texts, typically the \code{Header} from a \code{data.frame} object,
 #' containing taxonomy information in the proper format.
 #' 
-#' @details The ConTax data sets are \code{\link{Fasta}} objects, where the \code{Header} line follows
+#' @details The ConTax data sets are \code{Fasta} objects, where the \code{Header} line follows
 #' a strict format.
 #' 
 #' The Header always starts with a short text, a Tag, which is a unique identifier for every sequence.
