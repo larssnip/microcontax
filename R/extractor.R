@@ -16,7 +16,7 @@
 #' @param header A vector of texts, typically the \code{Header} from a table,
 #' containing taxonomy information in the proper format.
 #' 
-#' @details The ConTax data sets are tables in the FASTA format (see \code{\link{microseq::readFasta}}), 
+#' @details The ConTax data sets are tables in the FASTA format (see \code{\link{readFasta}}), 
 #' where the \code{Header} column contains texts according to a strict format.
 #' 
 #' The \code{header} always starts with a short text, a Tag, which is a unique identifier for every sequence.

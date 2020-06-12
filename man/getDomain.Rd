@@ -21,20 +21,21 @@ getTag(header)
 getTaxonomy(header)
 }
 \arguments{
-\item{header}{A vector of texts, typically the \code{Header} from a \code{data.frame} object,
+\item{header}{A vector of texts, typically the \code{Header} from a table,
 containing taxonomy information in the proper format.}
 }
 \value{
-A vector containing the sub-texts extracted from each \code{header} text.
+A vector containing the sub-texts extracted from each \code{header} text, but 
+\code{getTaxonomy} returns a table with the full taxonomy, one row for each input \code{header}
 }
 \description{
 Extracting taxonomic information from ConTax data sets.
 }
 \details{
-The ConTax data sets are \code{Fasta} objects, where the \code{Header} line follows
-a strict format.
+The ConTax data sets are tables in the FASTA format (see \code{\link{readFasta}}), 
+where the \code{Header} column contains texts according to a strict format.
 
-The Header always starts with a short text, a Tag, which is a unique identifier for every sequence.
+The \code{header} always starts with a short text, a Tag, which is a unique identifier for every sequence.
 The function \code{getTag} will extract this from the \code{header}.
 
 After the Tag follows one or more tokens. One of these tokens must be a string with the
@@ -46,9 +47,9 @@ where <...> is some proper text. Here is an example of a proper string:
 
 "k__Bacteria;p__Firmicutes;c__Bacilli;o__Bacillales;f__Staphylococcaceae;g__Staphylococcus;"
 
-The functions \code{getDomain}, ..., \code{getGenus} extract the
+The functions \code{getDomain}, ..., \code{getGenus} extracts the
 corresponding information from the \code{header}. \code{getTaxonomy}
-combines all taxonomy extractors, combines these in a data.frame
+combines all taxonomy extractors, combines these in a table
 and imputes missing taxa with parent taxa.
 }
 \examples{

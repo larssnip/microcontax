@@ -53,7 +53,7 @@ if (!requireNamespace("microcontax.data", quietly = TRUE)) {
  install.packages("microcontax.data")
 }
 # Load data
-data("contax.full", package="microcontax.data")
+data("contax.full", package = "microcontax.data")
 }
 
 }

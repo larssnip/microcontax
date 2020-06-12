@@ -55,7 +55,7 @@
 #'  install.packages("microcontax.data")
 #' }
 #' # Load data
-#' data("contax.full", package="microcontax.data")
+#' data("contax.full", package = "microcontax.data")
 #' }
 #' 
 NULL
@@ -110,7 +110,7 @@ NULL
 #' Each row contains the taxonomy information for a genus, hence the number of rows equals the number
 #' of unique genera.
 #' 
-#' To quickly look-up the higher-level taxonomy for a given genus, see the function \code{\link{genusLookup}}.
+#' To quickly look-up the higher rank taxonomy for a given genus, see the function \code{\link{genusLookup}}.
 #' 
 #' @author Hilde Vinje, Kristian Hovde Liland, Lars Snipen.
 #' 
@@ -121,6 +121,6 @@ NULL
 #' data(taxonomy.table)
 #' dim(taxonomy.table)
 #' taxonomy.table[1:10,]
-#' genusLookup(taxonomy.table$Genus[1:10],level="Family")
+#' genusLookup(taxonomy.table$Genus[1:10], rank = "Family")
 #' 
 NULL

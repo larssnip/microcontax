@@ -4,16 +4,16 @@
 \alias{genusLookup}
 \title{Taxonomy lookup}
 \usage{
-genusLookup(genera, level="Phylum")
+genusLookup(genera, rank = "Phylum")
 }
 \arguments{
 \item{genera}{A vector of texts, the genera names to look up.}
 
-\item{level}{A single text, the level of the taxonomy to look up.}
+\item{rank}{A single text, the level of the taxonomy to look up.}
 }
 \value{
 A character vector containing the taxonomy information. Names in \code{genera} not recognized will 
-return \code{NA}. Please note that there are some cases of un-assigned taxonomy at some levels 
+return \code{NA}. Please note that there are some cases of un-assigned taxonomy at some ranks 
 (Class, Order or Family), this is returned as "unknown".
 }
 \description{
@@ -27,8 +27,8 @@ set \code{\link{taxonomy.table}}.
 }
 \examples{
 genus <-  c("Acidilobus","Nitrosopumilus","Hyphomonas") 
-genusLookup(genus,level="Phylum")
-genusLookup(genus,level="Class")
+genusLookup(genus, rank = "Phylum")
+genusLookup(genus, rank = "Class")
 
 
 }

@@ -4,7 +4,7 @@
 #' 
 #' @description Extracting taxonomic information from the \code{\link{taxonomy.table}}.
 #' 
-#' @usage genusLookup(genera, level="Phylum")
+#' @usage genusLookup(genera, rank = "Phylum")
 #' 
 #' @param genera A vector of texts, the genera names to look up.
 #' @param rank A single text, the level of the taxonomy to look up.
