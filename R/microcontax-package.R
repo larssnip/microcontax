@@ -11,8 +11,8 @@
 #' @details \tabular{ll}{
 #' Package: \tab microcontax\cr
 #' Type: \tab Package\cr
-#' Version: \tab 1.1\cr
-#' Date: \tab 2016-07-28\cr
+#' Version: \tab 1.2\cr
+#' Date: \tab 2020-06-06\cr
 #' License: \tab GPL-2\cr
 #' }
 #' 
@@ -32,7 +32,7 @@ microcontax <- function(){
 
 .onLoad <- function(libname, pkgname) {
   repos = getOption("repos")
-  repos["UMB"] = "http://repository.umb.no/R"
+  repos["khliland"] = "https://github.com/khliland/drat"
   options(repos = repos)
   invisible(repos)
 }

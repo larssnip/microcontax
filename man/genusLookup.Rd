@@ -32,10 +32,9 @@ genusLookup(genus,level="Class")
 
 
 }
-\author{
-Hilde Vinje, Lars Snipen.
-}
 \seealso{
 \code{\link{taxonomy.table}}.
 }
-
+\author{
+Hilde Vinje, Lars Snipen.
+}

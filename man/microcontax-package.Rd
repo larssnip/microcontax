@@ -2,8 +2,8 @@
 % Please edit documentation in R/microcontax-package.R
 \docType{package}
 \name{microcontax-package}
-\alias{microcontax}
 \alias{microcontax-package}
+\alias{microcontax}
 \title{The ConTax data package}
 \usage{
 microcontax()
@@ -16,17 +16,16 @@ possible for training taxonomic classifiers based on 16S rRNA sequence data.
 \tabular{ll}{
 Package: \tab microcontax\cr
 Type: \tab Package\cr
-Version: \tab 1.1\cr
-Date: \tab 2016-07-28\cr
+Version: \tab 1.2\cr
+Date: \tab 2020-06-06\cr
 License: \tab GPL-2\cr
 }
+}
+\seealso{
+\code{\link[microseq:microseq-package]{microseq}}
 }
 \author{
 Hilde Vinje, Kristian Liland, Lars Snipen.\cr
 Maintainer: Lars Snipen <lars.snipen@nmbu.no>
 }
-\seealso{
-\code{\link[microseq:microseq-package]{microseq}}
-}
 \keyword{package}
-
