@@ -13,13 +13,13 @@
 #' getTag(header)
 #' getTaxonomy(header)
 #' 
-#' @param header A vector of texts, typically the \code{Header} from a \code{data.frame} object,
+#' @param header A vector of texts, typically the \code{Header} from a table,
 #' containing taxonomy information in the proper format.
 #' 
-#' @details The ConTax data sets are \code{Fasta} objects, where the \code{Header} line follows
-#' a strict format.
+#' @details The ConTax data sets are tables in the FASTA format (see \code{\link{microseq::readFasta}}), 
+#' where the \code{Header} column contains texts according to a strict format.
 #' 
-#' The Header always starts with a short text, a Tag, which is a unique identifier for every sequence.
+#' The \code{header} always starts with a short text, a Tag, which is a unique identifier for every sequence.
 #' The function \code{getTag} will extract this from the \code{header}.
 #' 
 #' After the Tag follows one or more tokens. One of these tokens must be a string with the
@@ -31,12 +31,13 @@
 #' 
 #' "k__Bacteria;p__Firmicutes;c__Bacilli;o__Bacillales;f__Staphylococcaceae;g__Staphylococcus;"
 #' 
-#' The functions \code{getDomain}, ..., \code{getGenus} extract the
+#' The functions \code{getDomain}, ..., \code{getGenus} extracts the
 #' corresponding information from the \code{header}. \code{getTaxonomy}
-#' combines all taxonomy extractors, combines these in a data.frame
+#' combines all taxonomy extractors, combines these in a table
 #' and imputes missing taxa with parent taxa.
 #' 
-#' @return A vector containing the sub-texts extracted from each \code{header} text.
+#' @return A vector containing the sub-texts extracted from each \code{header} text, but 
+#' \code{getTaxonomy} returns a table with the full taxonomy, one row for each input \code{header}
 #' 
 #' @author Lars Snipen.
 #' 
@@ -57,52 +58,58 @@
 #' @export getTag
 #' @export getTaxonomy
 #' 
-getDomain <- function( header ){
-  txt <- sub( ";", "", sub( "k__", "", unlist( microseq::gregexpr( "k__[^;]+;", header, extract=T ) ) ) )
-  return( txt )
+getDomain <- function(header){
+  txt <- sub(";", "", sub("k__", "", unlist(microseq::gregexpr("k__[^;]+;", header, extract = T))))
+  return(txt)
 }
 
-getPhylum <- function( header ){
-  txt <- sub( ";", "", sub( "p__", "", unlist( microseq::gregexpr( "p__[^;]+;", header, extract=T ) ) ) )
-  return( txt )
+getPhylum <- function(header){
+  txt <- sub(";", "", sub("p__", "", unlist(microseq::gregexpr("p__[^;]+;", header, extract = T))))
+  return(txt)
 }
 
-getClass <- function( header ){
-  txt <- sub( ";", "", sub( "c__", "", unlist( microseq::gregexpr( "c__[^;]+;", header, extract=T ) ) ) )
-  return( txt )
+getClass <- function(header){
+  txt <- sub(";", "", sub("c__", "", unlist(microseq::gregexpr("c__[^;]+;", header, extract = T ))))
+  return(txt)
 }
 
-getOrder <- function( header ){
-  txt <- sub( ";", "", sub( "o__", "", unlist( microseq::gregexpr( "o__[^;]+;", header, extract=T ) ) ) )
-  return( txt )
+getOrder <- function(header){
+  txt <- sub(";", "", sub("o__", "", unlist(microseq::gregexpr("o__[^;]+;", header, extract = T))))
+  return(txt)
 }
 
-getFamily <- function( header ){
-  txt <- sub( ";", "", sub( "f__", "", unlist( microseq::gregexpr( "f__[^;]+;", header, extract=T ) ) ) )
-  return( txt )
+getFamily <- function(header){
+  txt <- sub(";", "", sub("f__", "", unlist(microseq::gregexpr("f__[^;]+;", header, extract = T))))
+  return(txt)
 }
 
-getGenus <- function( header ){
-  txt <- sub( ";", "", sub( "g__", "", unlist( microseq::gregexpr( "g__[^;]+;", header, extract=T ) ) ) )
-  return( txt )
+getGenus <- function(header){
+  txt <- sub(";", "", sub("g__", "", unlist(microseq::gregexpr("g__[^;]+;", header, extract = T))))
+  return(txt)
 }
 
-getTag <- function( header ){
-  tag <- sapply( strsplit( header, split=" " ), function( x ){ x[1] } )
-  return( tag )
+getTag <- function(header){
+  tag <- sapply(strsplit(header, split=" "), function(x){x[1]})
+  return(tag)
 }
 
-getTaxonomy <- function( header ){
-  domain <- getDomain( header )
-  phylum <- getPhylum( header )
-  class  <- getClass( header)
-  order  <- getOrder( header)
+getTaxonomy <- function(header){
+  domain <- getDomain(header)
+  phylum <- getPhylum(header)
+  class  <- getClass(header)
+  order  <- getOrder(header)
   family <- getFamily(header)
-  genus  <- getGenus( header)
-  class [class  == "unknown"] <- paste(phylum[class  == "unknown"], '.class',  sep="")
-  order [order  == "unknown"] <- paste(class [order  == "unknown"], '.order',  sep="")
-  family[family == "unknown"] <- paste(order [family == "unknown"], '.family', sep="")
-  genus [genus  == "unknown"] <- paste(family[genus  == "unknown"], '.genus',  sep="")
-  data.frame(domain = domain, phylum = phylum, class = class, order = order, family = family, genus = genus, stringsAsFactors = FALSE)
+  genus  <- getGenus(header)
+  class [class  == "unknown"] <- paste0(phylum[class  == "unknown"], '.class')
+  order [order  == "unknown"] <- paste0(class [order  == "unknown"], '.order')
+  family[family == "unknown"] <- paste0(order [family == "unknown"], '.family')
+  genus [genus  == "unknown"] <- paste0(family[genus  == "unknown"], '.genus')
+  data.frame(domain = domain, 
+             phylum = phylum,
+             class = class,
+             order = order,
+             family = family,
+             genus = genus,
+             stringsAsFactors = FALSE)
 }
 

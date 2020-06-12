@@ -3,14 +3,14 @@ Package: microcontax
 Type: Package
 Title: The ConTax Data Package
 Version: 1.2
-Date: 2020-06-06
+Date: 2020-06-12
 Author: Hilde Vinje, Kristian Hovde Liland, Lars Snipen.
 Maintainer: Lars Snipen <lars.snipen@nmbu.no>
 Description: The consensus taxonomy for prokaryotes is a set of data-sets for
     best possible taxonomic classification based on 16S rRNA sequence data.
 License: GPL-2
 Depends:
-    R (>= 3.0.0)
+    R (>= 3.5.0)
 Imports:
     microseq
 Suggests: 

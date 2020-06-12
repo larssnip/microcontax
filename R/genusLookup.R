@@ -7,17 +7,17 @@
 #' @usage genusLookup(genera, level="Phylum")
 #' 
 #' @param genera A vector of texts, the genera names to look up.
-#' @param level A single text, the level of the taxonomy to look up.
+#' @param rank A single text, the level of the taxonomy to look up.
 #' 
 #' @details Function for looking up higher-level taxonomy of specified genera.
 #' 
 #' The argument \code{genera} must consist of names in the \code{Genus} column of the data
 #' set \code{\link{taxonomy.table}}.
 #' 
-#  The \code{level} text must be either "Domain", "Phylum", "Class", "Order" or "Family".
+#  The \code{rank} text must be either "Domain", "Phylum", "Class", "Order" or "Family".
 #' 
 #' @return A character vector containing the taxonomy information. Names in \code{genera} not recognized will 
-#' return \code{NA}. Please note that there are some cases of un-assigned taxonomy at some levels 
+#' return \code{NA}. Please note that there are some cases of un-assigned taxonomy at some ranks 
 #' (Class, Order or Family), this is returned as "unknown".
 #' 
 #' @author Hilde Vinje, Lars Snipen.
@@ -26,22 +26,24 @@
 #' 
 #' @examples 
 #' genus <-  c("Acidilobus","Nitrosopumilus","Hyphomonas") 
-#' genusLookup(genus,level="Phylum")
-#' genusLookup(genus,level="Class")
+#' genusLookup(genus, rank = "Phylum")
+#' genusLookup(genus, rank = "Class")
 #' 
 #' 
 #' @export genusLookup
 #' 
-genusLookup <- function( genera, level="Phylum" ){
-  lev <- c( "DOMAIN", "PHYLUM", "CLASS", "ORDER", "FAMILY" )
-  col <- match( toupper( level ), lev )
-  if( is.na( col ) ) stop( "Unknown level, must be: Domain, Phylum, Class, Order or Family" )
+genusLookup <- function(genera, rank = "Phylum"){
+  ranks <- c("DOMAIN", "PHYLUM", "CLASS", "ORDER", "FAMILY")
+  col <- match(toupper(rank), ranks)
+  if(is.na(col)) stop("Unknown rank, must be: Domain, Phylum, Class, Order or Family")
   taxonomy.table <- NULL
-  load( paste( path.package( "microcontax"), "/data/taxonomy.table.rda", sep="" ) )
-  vec <- match( genera, taxonomy.table$Genus )
+  load(paste0(path.package("microcontax"), "/data/taxonomy.table.rda"))
+  vec <- match(genera, taxonomy.table$Genus)
   ret <- taxonomy.table[vec,col]
-  return( ret )
+  return(ret)
 }
+
+
 
 #' @name fullTaxonomy
 #' @title The full taxonomy of a genus
@@ -74,15 +76,15 @@ genusLookup <- function( genera, level="Phylum" ){
 #' 
 #' @export fullTaxonomy
 #' 
-fullTaxonomy <- function( genera ){
+fullTaxonomy <- function(genera){
   taxonomy.table <- NULL
-  load( paste( path.package( "microcontax"), "/data/taxonomy.table.rda", sep="" ) )
-  qiime.heads <- paste( "k__", taxonomy.table$Domain,
+  load(paste0(path.package("microcontax"), "/data/taxonomy.table.rda"))
+  qiime.heads <- paste0("k__", taxonomy.table$Domain,
                         ";p__", taxonomy.table$Phylum,
                         ";c__", taxonomy.table$Class,
                         ";o__", taxonomy.table$Order,
                         ";f__", taxonomy.table$Family,
-                        ";g__", taxonomy.table$Genus, sep="" )
-  vec <- match( genera, taxonomy.table$Genus )
-  return( qiime.heads[vec] )
+                        ";g__", taxonomy.table$Genus)
+  vec <- match(genera, taxonomy.table$Genus)
+  return(qiime.heads[vec])
 }
