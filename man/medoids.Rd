@@ -11,7 +11,7 @@ data(medoids)
 The genus medoids from the ConTax data set.
 }
 \details{
-\code{medoids} is a \code{\link[microseq]{Fasta}} object containing the medoide sequences for each genus in 
+\code{medoids} is a \code{data.frame} object containing the medoide sequences for each genus in 
 the ConTax data sets (both \code{contax.trim} and \code{contax.full}).
 
 The medoide sequence in a genus is the sequence having the smallest sum of distance to all other members
@@ -26,10 +26,9 @@ data(medoids)
 summary(medoids)
 
 }
-\author{
-Hilde Vinje, Kristian Hovde Liland, Lars Snipen.
-}
 \seealso{
 \code{\link[microcontax.data]{contax.full}}, \code{\link{getDomain}}.
 }
-
+\author{
+Hilde Vinje, Kristian Hovde Liland, Lars Snipen.
+}
