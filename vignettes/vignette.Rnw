@@ -22,7 +22,7 @@ In this package you find a trimmed version of the full data set, named \texttt{c
 
 
 \section{Full data set}
-The full data set is too large to be part of a CRAN package. It is instead found in an additional data package named \texttt{micrcontax.data}. This is available at \url{http://repository.umb.no/R}. Here is how you install this package, provided you have already installed \texttt{microcontax}:
+The full data set is too large to be part of a CRAN package. It is instead found in an additional data package named \texttt{micrcontax.data}. This is available at \url{https://khliland.github.io/drat/}. Here is how you install this package, provided you have already installed \texttt{microcontax}:
 <<eval=FALSE>>=
 if (!requireNamespace("microcontax.data", quietly = TRUE)) {
  install.packages("microcontax.data")

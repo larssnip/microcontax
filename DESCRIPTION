@@ -15,5 +15,5 @@ Imports:
     microseq
 Suggests:
     microcontax.data
-Additional_repositories: https://github.com/khliland/drat
+Additional_repositories: https://khliland.github.io/drat/
 RoxygenNote: 7.1.1

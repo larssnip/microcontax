@@ -32,7 +32,7 @@ microcontax <- function(){
 
 .onLoad <- function(libname, pkgname) {
   repos = getOption("repos")
-  repos["khliland"] = "https://github.com/khliland/drat"
+  repos["khliland"] = "https://khliland.github.io/drat/"
   options(repos = repos)
   invisible(repos)
 }
