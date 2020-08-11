@@ -13,5 +13,7 @@ Depends:
     R (>= 3.5.0)
 Imports:
     microseq
+Suggests:
+    microcontax.data
 Additional_repositories: https://github.com/khliland/drat
 RoxygenNote: 7.1.1
